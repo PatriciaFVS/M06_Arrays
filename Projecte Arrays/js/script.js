@@ -67,11 +67,25 @@ function reset(){
 
 
 function searchList(){
+	let buscaText=document.getElementById("buscarInput").value.toLowerCase();
+	nomsPokemon=nomsPokemon.filter(pokemon=> pokemon.name.toLowerCase().includes(buscaText));
+	printList();
 
 }
 function calcMitjana(){
+	if(nomsPokemon.length==0){
+		alert("No hi han pokemons per a calcular la mitjana");
+	}else{
+		let sumaPes=0;
+		for(let i=0; i< nomsPokemon.length;i++){
 
-}
+			sumaPes+=parseFloat(nomsPokemon[i].weight.replace("kg",""));
+		}
+
+		const mitja= sumaPes/nomsPokemon.length;
+		alert("La mitjana de pes dels Pokemon és: "+ mitja.toFixed(2));
+	}
+}	
 
 function printList(){
 	
